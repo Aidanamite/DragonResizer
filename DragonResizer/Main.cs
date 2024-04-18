@@ -17,7 +17,7 @@ using System.Collections.Concurrent;
 
 namespace DragonResizer
 {
-    [BepInPlugin("com.aidanamite.DragonResizer", "Dragon Resizer", "1.0.0")]
+    [BepInPlugin("com.aidanamite.DragonResizer", "Dragon Resizer", "1.0.1")]
     [BepInDependency("com.aidanamite.ConfigTweaks")]
     public class Main : BaseUnityPlugin
     {
@@ -62,7 +62,7 @@ namespace DragonResizer
                     {
                         var s = petAgeBoneData._Scale;
                         s.Scale(DragonScales[name]);
-                        s.Scale(DragonAgeScales[name]);
+                        s.Scale(DragonAgeScales[age]);
                         pet.SetBoneScale0(petAgeBoneData._BoneName, s);
                     }
             return changes;
