@@ -17,7 +17,7 @@ using System.Collections.Concurrent;
 
 namespace DragonResizer
 {
-    [BepInPlugin("com.aidanamite.DragonResizer", "Dragon Resizer", "1.0.1")]
+    [BepInPlugin("com.aidanamite.DragonResizer", "Dragon Resizer", "1.0.2")]
     [BepInDependency("com.aidanamite.ConfigTweaks")]
     public class Main : BaseUnityPlugin
     {
@@ -40,17 +40,19 @@ namespace DragonResizer
             var age = name + "-" + pet.pData.pStage.ToString();
             var flag = force;
             var changes = false;
-            if (!DragonScales.ContainsKey(name))
-            {
+            if (DragonScales.ContainsKey(name))
                 flag = true;
+            else
+            {
                 DragonScales[name] = Vector3.one;
                 if (save)
                     instance.Config.Save();
                 changes = true;
             }
-            if (!DragonAgeScales.ContainsKey(age))
-            {
+            if (DragonAgeScales.ContainsKey(age))
                 flag = true;
+            else
+            {
                 DragonAgeScales[age] = Vector3.one;
                 if (save)
                     instance.Config.Save();
