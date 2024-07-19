@@ -17,7 +17,7 @@ using System.Collections.Concurrent;
 
 namespace DragonResizer
 {
-    [BepInPlugin("com.aidanamite.DragonResizer", "Dragon Resizer", "1.0.3")]
+    [BepInPlugin("com.aidanamite.DragonResizer", "Dragon Resizer", "1.0.4")]
     [BepInDependency("com.aidanamite.ConfigTweaks")]
     public class Main : BaseUnityPlugin
     {
@@ -36,9 +36,9 @@ namespace DragonResizer
         }
         public static bool UpdateBoneScales(SanctuaryPet pet, bool force, bool save)
         {
-            if (!pet || pet.GetTypeSettings() == null || pet.pData == null)
+            if (!pet || pet.GetTypeInfo() == null || pet.pData == null)
                 return false;
-            var name = pet.GetTypeSettings()._Name;
+            var name = pet.pTypeInfo._Name;
             var age = name + "-" + pet.pData.pStage.ToString();
             var flag = force;
             var changes = false;
